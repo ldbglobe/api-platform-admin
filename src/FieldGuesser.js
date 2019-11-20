@@ -27,6 +27,8 @@ const isFieldSortable = (field, resourceSchema) => {
 };
 
 const renderField = (field, props) => {
+  if(field.field)
+    return field.field(props);
   if (null !== field.reference) {
     if (1 === field.maxCardinality) {
       return (
