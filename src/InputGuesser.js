@@ -28,6 +28,9 @@ export const InputGuesserComponent = ({fields, resourceSchema, ...props}) => {
 
   const validate =
     !props.validate && field.required ? [required()] : props.validate;
+  
+  if(field.input)
+    return field.input(props);
 
   if (null !== field.reference) {
     if (1 === field.maxCardinality) {
